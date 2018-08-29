@@ -16,13 +16,13 @@ import java.util.Scanner;
 public class SayHello {
   public static void main( String args[] ) {
     String input = "World";
-    String n = "Hello, " + inputName + "!";
+    String n = "Hello, " + input + "!";
 
     Scanner myInput = new Scanner( System.in );
     System.out.println("What is your name? ");
     String inputName = myInput.nextLine();
 
-    String n = "Hello, " + inputName + "!";
+    n = "Hello, " + inputName + "!";
     System.out.println(n);
   }
 }
