@@ -15,14 +15,15 @@ import java.util.Scanner;
 
 public class SayHello {
   public static void main( String args[] ) {
-    String input = "World";
-    String n = "Hello, " + input + "!";
+   String input = "World";
+   String n = "Hello, " + input + "!";
+   System.out.println(n);
 
-    Scanner myInput = new Scanner( System.in );
-    System.out.println("What is your name? ");
-    String inputName = myInput.nextLine();
+   Scanner myInput = new Scanner( System.in );
+   System.out.println("What is your name? ");
+   String inputName = myInput.nextLine();
 
-    n = "Hello, " + inputName + "!";
-    System.out.println(n);
+   n = "Hello, " + inputName + "!";
+   System.out.println(n);
   }
 }
