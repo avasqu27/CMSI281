@@ -4,7 +4,7 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
+ * Description:  Builds queue; insertion, deletion, peek, and isEmpty or Full 
  *
  * Notes      :  None
  * Warnings   :  None
