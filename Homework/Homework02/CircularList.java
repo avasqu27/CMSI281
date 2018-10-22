@@ -4,8 +4,7 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
- *                 wi
+ * Description:  Creates a circular list with deletion, insertion, and searching methods 
  * Notes      :  None
  * Warnings   :  None
  *
