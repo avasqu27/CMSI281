@@ -4,8 +4,8 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
- *                 wi
+ * Description:  Creates a circular stack with push, peek, and pop characteristics 
+ *                 
  * Notes      :  None
  * Warnings   :  None
  *
