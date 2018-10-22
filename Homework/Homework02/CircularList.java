@@ -15,7 +15,7 @@ public class CircularList {
 
   private Node head;
   private Node last;
-  private Node current;
+  public Node current;
   private int  size;
 
   // the constructor
@@ -194,10 +194,17 @@ public class CircularList {
   /*
      @return int, returns size of the list
   */
-  public int returnSize(){
+  public int returnSize() {
     return this.size;
   }
   
+  /*
+     @return int, returns current node looked at
+  */
+  public int getCurrent() {
+    return current.data;
+  }
+
 // --------------------------------------------------------------------------------------
   public static void main(String[] args) {
     CircularList cl = new CircularList(); //make new CircularList
