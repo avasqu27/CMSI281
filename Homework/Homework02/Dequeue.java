@@ -12,14 +12,14 @@
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class Dequeue extends Queue {
 
-  private  Queue frontQ = new Queue(n);
-  private  Queue backQ = new Queue(n);
-  private  int initial = n;
+  private  Queue frontQ = new Queue(0);
+  private  Queue backQ = new Queue(0);
+  private  int initial;
 //  private  int   maxSize;
 
   public Dequeue(int n) { //constructor
 //    maxSize = n;
-    super(n); 
+    super(n);
     initial = n;
   }
 
@@ -44,7 +44,7 @@ public class Dequeue extends Queue {
   */
   public void insertLeft(long j) {
    backQ.insert(j);
-   frontQ = reverse(Q);
+   frontQ = reverseQ(backQ);
   }
 
   /*
@@ -62,8 +62,8 @@ public class Dequeue extends Queue {
   public long removeLeft() {
     // removeAt() function in Queue
     // will always remove first element in queue
-    backQ.remove(j);
-    frontQ = reverse(Q);
+    backQ.remove();
+    frontQ = reverseQ(backQ);
   }
 
   /*
@@ -72,7 +72,7 @@ public class Dequeue extends Queue {
   public long removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
-    frontQ.remove(j);
+    frontQ.remove();
     backQ = reverseQ(frontQ);
   }
 
