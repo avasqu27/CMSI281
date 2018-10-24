@@ -4,23 +4,27 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
+ * Description:  Creates a deque class with functions that reverse, insertLeft, insertRight, and removeLeft, removeRight.
  *
  * Notes      :  None
  * Warnings   :  None
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
- public class Dequeue extends Queue{
+import java.util.Arrays;
+ public class Dequeue extends Queue {
 
-  private  Queue frontQ = new Queue(0);
-  private  Queue backQ = new Queue(0);
-  private  int initial;
-//  private  int   maxSize;
+  private  int   maxSize;
+
+  public  Queue frontQ ;//= new Queue(maxSize); //= new Queue(0);
+  public  Queue backQ ;//= new Queue(maxSize);  //= new Queue(0);
 
   public Dequeue(int n) { //constructor
-//    maxSize = n;
     super(n);
-    initial = n;
+    maxSize = n;
+    frontQ = new Queue(maxSize); //= new Queue(0);
+    backQ = new Queue(maxSize);
+    //System.out.println(Arrays.toString(frontQ.queArray));
+    //System.out.println("Length in Dequeue: " + frontQ.queArray.length);
   }
 
   /*
@@ -43,7 +47,19 @@
     @return void; adds value to left of queue and reverses to update frontQ
   */
   public void insertLeft(long j) {
-   backQ.insert(j);
+   //backQ.insert(j);
+   //System.out.println("Display Q: " + frontQ.toString());
+   long[] queArray = backQ.queArray;
+   if(backQ.rear == maxSize-1) {                   // deal with wraparound
+      backQ.rear = -1;
+   }
+   //System.out.println("J value: " + j);
+   //System.out.println("Length: " + queArray.length);
+   //System.out.println("Rear: " + rear);
+   //System.out.println("Rear of BackQ: " + backQ.rear);
+  //  System.out.println("Rear of BackQ: " + ++backQ.rear);
+   queArray[++backQ.rear] = j;                   // increment rear and insert
+   backQ.nItems++;
    frontQ = reverseQ(backQ);
   }
 
@@ -62,8 +78,21 @@
   public long removeLeft() {
     // removeAt() function in Queue
     // will always remove first element in queue
-    backQ.remove();
+    long[] queArray = backQ.queArray;
+    long n = queArray[backQ.front++];
+
+    if(backQ.front == maxSize){ // deal with wraparound
+      front = 0;
+    }
+    maxSize--;
+    frontQ.front++;
+    for (int i = 0; i < maxSize; i++) {
+      queArray[i] = backQ.queArray[i+1];
+    }
+    backQ.queArray = queArray;
+    backQ.nItems--; // one less item
     frontQ = reverseQ(backQ);
+    return n;
   }
 
   /*
@@ -72,8 +101,9 @@
   public long removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
-    frontQ.remove();
+    long n = removeLeft();
     backQ = reverseQ(frontQ);
+    return n;
   }
 
   /*
