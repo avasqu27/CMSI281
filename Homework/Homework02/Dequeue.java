@@ -82,7 +82,7 @@ import java.util.Arrays;
     long n = queArray[backQ.front++];
 
     if(backQ.front == maxSize){ // deal with wraparound
-      front = 0;
+      backQ.front = 0;
     }
     maxSize--;
     frontQ.front++;
@@ -101,8 +101,21 @@ import java.util.Arrays;
   public long removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
+  /*long[] queArray = frontQ.queArray;
+    long n = queArray[frontQ.front++];
+
+    if(frontQ.front == maxSize){ // deal with wraparound
+      frontQ.front = 0;
+    }
+    maxSize--;
+    backQ.front++;
+    for (int i = 0; i < maxSize; i++) {
+      queArray[i] = frontQ.queArray[i+1];
+    }
+    frontQ.queArray = queArray;
+    frontQ.nItems--; // one less item
+    backQ = reverseQ(frontQ);*/
     long n = removeLeft();
-    backQ = reverseQ(frontQ);
     return n;
   }
 
