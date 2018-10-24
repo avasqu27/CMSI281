@@ -10,7 +10,7 @@
  * Warnings   :  None
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-public class Dequeue extends Queue {
+ public class Dequeue extends Queue{
 
   private  Queue frontQ = new Queue(0);
   private  Queue backQ = new Queue(0);
