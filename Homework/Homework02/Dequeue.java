@@ -4,7 +4,7 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  Creates dequeue using frontQ and backQ 
+ * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
  *
  * Notes      :  None
  * Warnings   :  None
@@ -12,15 +12,15 @@
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 public class Dequeue extends Queue {
 
-  private  Queue frontQ;
-  private  Queue backQ;
+  private  Queue frontQ = new Queue(n);
+  private  Queue backQ = new Queue(n);
+  private  int initial = n;
 //  private  int   maxSize;
 
-//constructor
-  public Dequeue(int n) { 
-    super(n);
-    frontQ = new Queue(n);
-    backQ = new Queue(n);
+  public Dequeue(int n) { //constructor
+//    maxSize = n;
+    super(n); 
+    initial = n;
   }
 
   /*
@@ -44,7 +44,7 @@ public class Dequeue extends Queue {
   */
   public void insertLeft(long j) {
    backQ.insert(j);
-   frontQ = reverseQ(backQ);
+   frontQ = reverse(Q);
   }
 
   /*
@@ -62,9 +62,8 @@ public class Dequeue extends Queue {
   public long removeLeft() {
     // removeAt() function in Queue
     // will always remove first element in queue
-    long i = backQ.remove();
-    frontQ = reverseQ(backQ);
-    return i;
+    backQ.remove(j);
+    frontQ = reverse(Q);
   }
 
   /*
@@ -73,9 +72,8 @@ public class Dequeue extends Queue {
   public long removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
-    long i = frontQ.remove();
+    frontQ.remove(j);
     backQ = reverseQ(frontQ);
-    return i;
   }
 
   /*
