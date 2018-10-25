@@ -46,77 +46,84 @@ import java.util.Arrays;
     @param long value to be inserted
     @return void; adds value to left of queue and reverses to update frontQ
   */
-  public void insertLeft(long j) {
-   //backQ.insert(j);
-   //System.out.println("Display Q: " + frontQ.toString());
-   long[] queArray = backQ.queArray;
-   if(backQ.rear == maxSize-1) {                   // deal with wraparound
-      backQ.rear = -1;
-   }
-   //System.out.println("J value: " + j);
-   //System.out.println("Length: " + queArray.length);
-   //System.out.println("Rear: " + rear);
-   //System.out.println("Rear of BackQ: " + backQ.rear);
-  //  System.out.println("Rear of BackQ: " + ++backQ.rear);
-   queArray[++backQ.rear] = j;                   // increment rear and insert
-   backQ.nItems++;
-   frontQ = reverseQ(backQ);
+  public void insertRight(long j) {
+    long[] queArray = frontQ.queArray;
+    if(frontQ.rear == maxSize-1) {                   // deal with wraparound
+      frontQ.rear = -1;
+    }
+    queArray[++frontQ.rear+1] = j;                   // increment rear and insert
+    frontQ.nItems++;
+    backQ = reverseQ(frontQ);
   }
 
   /*
     @param long value to be inserted
     @return void; adds value to right of queue and reverses to update backQ
   */
-  public void insertRight(long j) {
-   frontQ.insert(j);
-   backQ = reverseQ(frontQ);
+  public void insertLeft(long j) {
+    long[] queArray = backQ.queArray;
+    if(backQ.rear == maxSize-1) {                   // deal with wraparound
+     backQ.rear = -1;
+    }
+    queArray[++backQ.rear+1] = j;                   // increment rear and insert
+    frontQ.nItems++;
+    backQ.nItems = frontQ.nItems;
+    frontQ = reverseQ(backQ);
   }
 
   /*
     @return long; removes left value in backQ and updates frontQ
   */
-  public long removeLeft() {
+  public void removeLeft() {
     // removeAt() function in Queue
     // will always remove first element in queue
-    long[] queArray = backQ.queArray;
-    long n = queArray[backQ.front++];
-
-    if(backQ.front == maxSize){ // deal with wraparound
-      backQ.front = 0;
+    long[] queArray = frontQ.queArray;
+    //long n = queArray[frontQ.front++];
+    if(frontQ.front == maxSize){ // deal with wraparound
+      frontQ.front = 0;
     }
-    maxSize--;
-    frontQ.front++;
+    frontQ.nItems--;
     for (int i = 0; i < maxSize; i++) {
-      queArray[i] = backQ.queArray[i+1];
+      if (i >= frontQ.nItems) {
+        queArray[i] = 0;
+      }
+      else {
+        queArray[i] = frontQ.queArray[i+1];
+      }
     }
-    backQ.queArray = queArray;
-    backQ.nItems--; // one less item
-    frontQ = reverseQ(backQ);
-    return n;
+    backQ = reverseQ(frontQ);
+    //long n = queArray[];
+    //return n;
   }
 
   /*
     @return long; removes right value in frontQ and updates backQ
   */
-  public long removeRight() {
+  public void removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
-  /*long[] queArray = frontQ.queArray;
-    long n = queArray[frontQ.front++];
-
+    //System.out.println("\n First: " + frontQ.toString());
+    long[] queArray = backQ.queArray;
+    //long n = queArray[frontQ.front++];
     if(frontQ.front == maxSize){ // deal with wraparound
       frontQ.front = 0;
     }
-    maxSize--;
-    backQ.front++;
-    for (int i = 0; i < maxSize; i++) {
-      queArray[i] = frontQ.queArray[i+1];
+    frontQ.nItems--;
+    System.out.println(frontQ.nItems);
+    System.out.println("\nBackQ: " + backQ.toString());
+    //for (int i = 0; i < maxSize-1; i++) {
+    queArray[maxSize-frontQ.nItems] = 0;
+    //}
+
+
+
+    for (int i = 0; i < maxSize-1; i++) {
+        queArray[i] = backQ.queArray[i];
     }
-    frontQ.queArray = queArray;
-    frontQ.nItems--; // one less item
-    backQ = reverseQ(frontQ);*/
-    long n = removeLeft();
-    return n;
+
+    frontQ = reverseQ(backQ);
+    //long n = queArray[];
+    //return n;
   }
 
   /*
