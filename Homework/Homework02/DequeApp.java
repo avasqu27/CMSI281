@@ -4,7 +4,7 @@
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-10-22
- * Description:  JAVADOCS !!!!!!!!!!!!!!!!!!!!
+ * Description:  Tests the Deque.java code
  *
  * Notes      :  None
  * Warnings   :  None
@@ -72,17 +72,6 @@ class DequeApp {
      theDeque.removeRight();
      System.out.println("\nDeque is currently: " + theDeque.frontQ.toString());
      System.out.println("\nIs the deque empty though? " + theDeque.isEmpty());
-
-     int x = theDeque.queArray.length;
-     /*
-     while (x >= 0 ) {
-  //   while( !theDeque.isEmpty() ) {     // remove and display all items
-       long n = theDeque.removeRight();      // (40, 50, 60, 70, 80)
-       System.out.println(n);
-       System.out.println("\nDeque is currently: " + theDeque.frontQ.toString());
-       x--;
-     }
-     */
      System.out.println("\nOur final Deque is: " + theDeque.frontQ.toString());
      System.out.println("");
   } // end main()
