@@ -1,5 +1,5 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- * File name  :  Dequeue.java
+ * File name  :  Deque.java
  * Purpose    :  Gain practice with packages
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
@@ -11,20 +11,18 @@
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 import java.util.Arrays;
- public class Dequeue extends Queue {
+ public class Deque extends Queue {
 
-  private  int   maxSize;
+  private int   maxSize;
+  public  Queue frontQ ;
+  public  Queue backQ ;
+  public  int   count = -2;
 
-  public  Queue frontQ ;//= new Queue(maxSize); //= new Queue(0);
-  public  Queue backQ ;//= new Queue(maxSize);  //= new Queue(0);
-
-  public Dequeue(int n) { //constructor
+  public Deque(int n) {                              //constructor
     super(n);
     maxSize = n;
-    frontQ = new Queue(maxSize); //= new Queue(0);
+    frontQ = new Queue(maxSize);
     backQ = new Queue(maxSize);
-    //System.out.println(Arrays.toString(frontQ.queArray));
-    //System.out.println("Length in Dequeue: " + frontQ.queArray.length);
   }
 
   /*
@@ -53,7 +51,10 @@ import java.util.Arrays;
     }
     queArray[++frontQ.rear+1] = j;                   // increment rear and insert
     frontQ.nItems++;
+    count++;
     backQ = reverseQ(frontQ);
+    /************/
+  //  backQ.nItems = frontQ.nItems;
   }
 
   /*
@@ -67,7 +68,8 @@ import java.util.Arrays;
     }
     queArray[++backQ.rear+1] = j;                   // increment rear and insert
     frontQ.nItems++;
-    backQ.nItems = frontQ.nItems;
+    count++;
+  //  backQ.nItems = frontQ.nItems;
     frontQ = reverseQ(backQ);
   }
 
@@ -78,8 +80,7 @@ import java.util.Arrays;
     // removeAt() function in Queue
     // will always remove first element in queue
     long[] queArray = frontQ.queArray;
-    //long n = queArray[frontQ.front++];
-    if(frontQ.front == maxSize){ // deal with wraparound
+    if(frontQ.front == maxSize){                     // deal with wraparound
       frontQ.front = 0;
     }
     frontQ.nItems--;
@@ -92,8 +93,9 @@ import java.util.Arrays;
       }
     }
     backQ = reverseQ(frontQ);
-    //long n = queArray[];
-    //return n;
+    count--;
+    /************/
+  //  backQ.nItems = frontQ.nItems;
   }
 
   /*
@@ -102,41 +104,33 @@ import java.util.Arrays;
   public void removeRight() {
     // removeAt() function in IntLinkedList
     // will always remove last element in queue
-    //System.out.println("\n First: " + frontQ.toString());
     long[] queArray = backQ.queArray;
-    //long n = queArray[frontQ.front++];
-    if(frontQ.front == maxSize){ // deal with wraparound
+    if(frontQ.front == maxSize){                      // deal with wraparound
       frontQ.front = 0;
     }
-    frontQ.nItems--;
-    System.out.println(frontQ.nItems);
-    System.out.println("\nBackQ: " + backQ.toString());
-    //for (int i = 0; i < maxSize-1; i++) {
-    queArray[maxSize-frontQ.nItems] = 0;
-    //}
-
-
-
-    for (int i = 0; i < maxSize-1; i++) {
-        queArray[i] = backQ.queArray[i];
-    }
-
+    queArray[maxSize-backQ.nItems] = 0;
+    backQ.nItems--;
     frontQ = reverseQ(backQ);
-    //long n = queArray[];
-    //return n;
+    /************/
+    count--;
+    //frontQ.nItems= backQ.nItems ;
   }
 
   /*
     @return boolean; returns true if queue is empty
   */
   public boolean isEmpty() {
-    return ( (frontQ.nItems==0 ) && (backQ.nItems==0) );
+    //int fq = frontQ.nItems;
+    //int bq = backQ.nItems;
+    return (count == 0);
+    //return ( (frontQ.nItems==0 ) && (backQ.nItems==0) );
   }
 
   /*
     @return boolean; returns true if queue is full
   */
   public boolean isFull() {
-   return ( (frontQ.nItems==maxSize ) && (backQ.nItems==maxSize) );
+    return ((count +2 )== maxSize);
+   //return ( (frontQ.nItems==maxSize ) && (backQ.nItems==maxSize) );
   }
 }
