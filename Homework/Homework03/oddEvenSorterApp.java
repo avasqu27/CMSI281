@@ -1,6 +1,6 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * File name  :  oddEvenSorterApp.java
- * Purpose    :  Gain practice with packages
+ * Purpose    :  Sorts and inserts values 
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-11-07
