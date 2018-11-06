@@ -14,7 +14,7 @@ class oddEvenSorterApp {
     System.out.println("Now starting a new array: ");
     int maxSize = 100;                 // array size
     oddEvenSorter arr;                 // reference to array
-    arr = new oddEvenSorter(maxSize);         // create the array
+    arr = new oddEvenSorter(maxSize);  // create the array
     arr.insert(77);                    // insert 10 items
     arr.insert(9);
     arr.insert(44);
@@ -30,10 +30,10 @@ class oddEvenSorterApp {
     arr.display();                     // display them again
     System.out.println("");
     System.out.println("Now starting a new array: ");
-    maxSize = 100;                 // array size
-    oddEvenSorter arr1;                 // reference to array
-    arr1 = new oddEvenSorter(maxSize);         // create the array
-    arr1.insert(89);                    // insert 10 items
+    maxSize = 100;                     // array size
+    oddEvenSorter arr1;                // reference to array
+    arr1 = new oddEvenSorter(maxSize); // create the array
+    arr1.insert(89);                   // insert 10 items
     arr1.insert(65);
     arr1.insert(73);
     arr1.insert(34);
@@ -45,15 +45,15 @@ class oddEvenSorterApp {
     arr1.insert(13);
     arr1.insert(19);
     arr1.insert(20);
-    arr1.display();                     // display items
-    arr1.oddEvenSort();                 // odd/even sort them
-    arr1.display();                     // display them again
+    arr1.display();                    // display items
+    arr1.oddEvenSort();                // odd/even sort them
+    arr1.display();                    // display them again
     System.out.println("");
     System.out.println("Now starting a new array: ");
-    maxSize = 100;                 // array size
-    oddEvenSorter arr2;                 // reference to array
-    arr2 = new oddEvenSorter(maxSize);         // create the array
-    arr2.insert(69);                    // insert 10 items
+    maxSize = 100;                     // array size
+    oddEvenSorter arr2;                // reference to array
+    arr2 = new oddEvenSorter(maxSize); // create the array
+    arr2.insert(69);                   // insert 10 items
     arr2.insert(77);
     arr2.insert(73);
     arr2.insert(24);
@@ -67,9 +67,9 @@ class oddEvenSorterApp {
     arr2.insert(59);
     arr2.insert(61);
     arr2.insert(68);
-    arr2.display();                     // display items
-    arr2.oddEvenSort();                 // odd/even sort them
-    arr2.display();                     // display them again
+    arr2.display();                    // display items
+    arr2.oddEvenSort();                // odd/even sort them
+    arr2.display();                    // display them again
     System.out.println("");
-  } // end main()
-} // end class OddEvenSortApp
+  }                                    // end main()
+}                                      // end of class OddEvenSortApp
