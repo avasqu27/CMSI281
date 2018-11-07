@@ -1,6 +1,6 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * File name  :  SimonApp.java
- * Purpose    :  Play Simon
+ * Purpose    :  Plays Simon
  * @author    :  Ale Vasquez
  * @author    :  Bob (R. Ventura)
  * Date       :  2018-11-07
@@ -8,23 +8,11 @@
  * Notes      :  None
  * Warnings   :  None
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+import java.util.Scanner;
 class SimonApp {
-  import java.util.Scanner;
-  public static void main(String[] args) {
-    // Preparing to play Simon...
-    int maxSize = 100;                 // size of the array holding pattern
-    oddEvenSorter arr;                 // reference to array
-    arr = new oddEvenSorter(maxSize);  // create the array
 
-    public void colorArray() {
-      oddEvenSorter colors;                 // reference to color array
-      colors = new oddEvenSorter(3);  // create the color array
-      colors.insert("R");
-      colors.insert("B");
-      colors.insert("G");
-      colors.insert("Y");
-    }
-
+  public static void main(String[] args) throws InterruptedException {
+    String play = "";
     System.out.println("");
     System.out.println("Let's play Simon! ");
     System.out.println("Type the correct color in the right pattern. ");
@@ -32,30 +20,64 @@ class SimonApp {
     System.out.println("Ready? Type Y to start: ");
     System.out.println("");
     Scanner myInput = new Scanner( System.in );
-    String play = myInput.nextLine().toUpperCase;
-    //String play = myInput.toUpperCase;
-    // we may want to do something to check if they give us a number
-
-    while (play == "Y"){
-      arr.insert(randomColor());
-      System.out.println("Current pattern is: " + arr.display() );
-      System.out.println("What's your guess?");
-      Scanner guessIn = new Scanner(System.in);
-      String guess = guessIn.nextLine().toUpperCase;
-      if (guess == arr[i]){
-        System.out.println("That's right! ");
-        // This needs to be repeated multiple times
-      } else {
-        play = "N";
+    try {
+      play = myInput.nextLine().toUpperCase();
+      if (play.equals("Y") == false) {
+        throw new NumberFormatException();
       }
     }
-    System.out.println("Good try! The pattern was " + arr.display() );
-
-    private String randomColor() {
-      String randColor = Math.random()*(4);
-      randColor = colors.[randColor]
-      return randColor;
+    catch (NumberFormatException e) {
+      System.out.println("You said " + play);
+      System.out.println("You should've said Y ");
+      play = "N";
     }
 
+     // Preparing to play Simon...
+    int maxSize = 100;                 // size of the array holding pattern
+    Simon arr;                         // reference to array
+    arr = new Simon(maxSize);          // create the array
+    // CREATING COLOR ARRAY USING SIMON
+    Simon colors = new Simon(4);       // create the color array
+    colors.insert("R");
+    colors.insert("B");
+    colors.insert("G");
+    colors.insert("Y");
 
+    int randColor = (int)Math.floor(Math.random()*(4));
+
+    while (play != "N") {
+      String n = colors.a[randColor];
+      System.out.println("So far, so good! ");
+      arr.insert(n);
+      System.out.println("Current pattern is: " );
+      arr.display();
+      System.out.println("Wait 4 seconds to type your answer...");
+      Thread.sleep(4000);
+      System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+      System.out.println("What's your guess? (Put spaces in between)");
+
+      Scanner guessIn = new Scanner(System.in);
+      String guess = guessIn.nextLine().toUpperCase();
+      String[] guessArr = guess.split(" ");
+      for (int i = 0;  i < arr.nElems; i++) {
+        try {
+          if (guessArr[i].equals(arr.a[i])) {
+            continue;
+          } else {
+            System.out.println("That's wrong! ");
+            play = "N";
+            break;
+          }
+        }
+        catch(Exception e) {
+          System.out.println("Something went hinky");
+          play = "N";
+          break;
+        }
+      }
+      randColor = (int)Math.floor(Math.random()*(4));
+    }
+    System.out.println("ERRR! thank you for playing. The pattern was " );
+    arr.display();
+  }
 }
