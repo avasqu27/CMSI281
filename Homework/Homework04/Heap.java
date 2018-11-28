@@ -1,5 +1,5 @@
 /** ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
- *  File name     :  heap.java
+ *  File name     :  Heap.java
  *  Purpose       :  Provides a class defining methods for the Node and Heap class
  *  @author       :  Ale, Bob
  *  Date written  :  2018-11-27
@@ -35,10 +35,19 @@ public class Heap {
         currentSize = 0;
         heapArray = new Node[maxSize]; // create array
     }
+
+    /*
+    @return boolean ; returns true if currentSize == 0
+    */
     // -------------------------------------------------------------
     public boolean isEmpty() {
         return currentSize==0;
     }
+
+    /*
+    @param key; key to insert
+    @return boolean ; returns true if key is successfully inserted
+    */
     // -------------------------------------------------------------
     public boolean insert(int key) {
         if(currentSize==maxSize) {
@@ -49,6 +58,11 @@ public class Heap {
         trickleUp(currentSize++);
         return true;
     } // end insert()
+
+    /*
+    @param index; number placed at bottom
+    @return void ; shifts the contents of each index down
+    */
     // -------------------------------------------------------------
     public void trickleUp(int index) {
         int parent = (index-1)/2;
@@ -60,6 +74,10 @@ public class Heap {
         } // end while
         heapArray[index] = bottom;
     }   // end trickleUp()
+
+    /*
+    @return Node ; returns root of tree
+    */
     // -------------------------------------------------------------
     public Node remove() { // delete item with max key
         Node root = heapArray[0];  // (assumes non-empty list)
@@ -67,6 +85,11 @@ public class Heap {
         trickleDown(0);
         return root;
     } // end remove()
+
+    /*
+    @param index; set as root
+    @return void ; sets index to root
+    */
     // -------------------------------------------------------------
     public void trickleDown(int index) {
         int largerChild;
@@ -88,6 +111,11 @@ public class Heap {
         } // end while
         heapArray[index] = top; // root to index
     }  // end trickleDown()
+
+    /*
+    @param ins, newValue; elements that will be changed
+    @return boolean ; returns true if successfully trickled
+    */
     // -------------------------------------------------------------
     public boolean change(int index, int newValue) {
         if( (index<0) || (index>=currentSize) ) {
@@ -103,7 +131,11 @@ public class Heap {
         }
         return true;
     }   //end change()
-//-------------------------------------------------------------
+
+    /*
+    @return void ; displays complete Heap
+    */
+   //-------------------------------------------------------------
     public void displayHeap() {
         System.out.print("heapArray: ");          // array format
         for(int m=0; m<currentSize; m++) {
