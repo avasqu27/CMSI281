@@ -69,6 +69,10 @@ public class Folded {
         hashTable[find(ins)] = "a"; // set to empty string to remove
         return removed;
     }
+
+    /*
+    @return String ; returns hashTable in String format
+    */
     public String toString() {
         String s = "";
         s = hashTable[0];
@@ -77,6 +81,11 @@ public class Folded {
         }
         return s;
     }
+
+    /*
+    @param args; String array
+    @return void ; Tests Folded.java program
+    */
     public static void main(String[] args) {
         Folded hashBrowns = new Folded(100,2);
         System.out.println("\nNow inserting the numbers '55451', '9532', '56', '666', '87', '1', '40', and '20': ");
@@ -91,6 +100,20 @@ public class Folded {
         System.out.println(hashBrowns.toString());
         System.out.println("\nNow deleting the number '20': ");
         hashBrowns.remove("20");
+        System.out.println(hashBrowns.toString());
+
+        System.out.println("\nNow inserting the numbers '55452', '9533', '57', '667', '88', '10', '40', and '21': ");
+        hashBrowns.insert("55451");
+        hashBrowns.insert("9533");
+        hashBrowns.insert("57");
+        hashBrowns.insert("667");
+        hashBrowns.insert("88");
+        hashBrowns.insert("10");
+        hashBrowns.insert("40");
+        hashBrowns.insert("21");
+        System.out.println(hashBrowns.toString());
+        System.out.println("\nNow deleting the number '55451': ");
+        hashBrowns.remove("55451");
         System.out.println(hashBrowns.toString());
     }
 }
