@@ -10,6 +10,7 @@
  * Warnings   :  None
  *
  *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+import java.io.*;
 
 public class HeapApp {
   public static void main(String[] args) throws IOException {
@@ -29,40 +30,41 @@ public class HeapApp {
     theHeap.insert(90);
 
     while (true) {                 // until [Ctrl]-[C]
-      System.out.print(“Enter first letter of “);
-      System.out.print(“show, insert, remove, change: “);
-      int choice = getChar();
+      System.out.println("Enter first letter of ");
+      System.out.println("show, insert, remove, change: ");
+      String choice =  ""+ getChar();
       switch(choice) {
-        case ‘s’:                 // show
+        case "s":                 // show
           theHeap.displayHeap();
           break;
-        case ‘i’:                 // insert
-          System.out.print(“Enter value to value = getInt());
+        case "i":                 // insert
+          System.out.println("Enter value to value = getInt()");
           value = getInt();
           success = theHeap.insert(value);
           if( !success ) {
-            System.out.println(“Can’t insert; heap full”);
+            System.out.println("Cannot insert; heap full");
           }
           break;
-        case ‘r’:                 // remove
+        case "r":                 // remove
           if( !theHeap.isEmpty() ) {
             theHeap.remove();
           } else {
-            System.out.println(“Can’t remove; heap empty”);
+            System.out.println("Cannot remove; heap empty");
           }
           break;
-        case 'c':                 // change
-          System.out.print(“Enter current index of item: “);
+        case "c":                 // change
+          System.out.println("Enter current index of item: ");
           value = getInt();
-          System.out.print(“Enter new key: “);
+          System.out.println("Enter new key: ");
           value2 = getInt();
           success = theHeap.change(value, value2);
           if( !success ) {
-            System.out.println(“Invalid index”);
+            System.out.println("Invalid index");
           }
           break;
         default:
-          System.out.println(“Invalid entry\n”);
+          System.out.println("Invalid entry");
+          System.out.println("");
       } // end switch
     } // end while
   }// end main()
